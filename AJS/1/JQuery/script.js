@@ -4,10 +4,11 @@ let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 let result = document.getElementById("result");
 let h1 = document.getElementsByTagName("h1")[0];
+let luke = document.getElementById("luke");
 
-btn1.addEventListener("click", function() {
+function ajaxCallSwapi(){
     $.ajax({
-        url: "https://swapi.co/api/people/1/?format=json",
+        url: "https://swapi.co/api/people/1/",
         success: function(response) {
             console.log("SUCCESS from jquery!!!!!");
             console.log(response);
@@ -31,8 +32,14 @@ btn1.addEventListener("click", function() {
             console.log(response.responseText);
         }
     })
-})
-btn2.addEventListener("click", function() {
+
+}
+function clearPage (){
     h1.innerHTML = "Jquery AJAX call";
     result.innerHTML = "";
-})
+}
+
+
+luke.addEventListener("click", ajaxCallSwapi);
+btn2.addEventListener("click", clearPage);
+//use "for each" to cycle thru the array in the api object and show the names of the swapi in the dropdown menu
